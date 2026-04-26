@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Awesome Design.md 🌟
 
 > 55+ 精选网站设计系统 · AI Agent 友好的 DESIGN.md 文件
@@ -47,3 +48,7 @@
 ---
 
 *数据来源：[VoltAgent/awesome-design-md](https://github.com/VoltAgent/awesome-design-md) (12k+ ⭐)*
+=======
+# design-md
+Design-MD 是一个基于 Go 语言开发的单文件静态 HTTP 服务器，专为 Awesome Design.md 项目设计。它将所有静态资源（HTML、CSS、图片等）打包到单个二进制可执行文件中，无需依赖外部文件即可运行，方便开发人员预览与AI自行调用。
+>>>>>>> 2cbed9686c2c12fd711a8cd7d945aecdf4b7c493

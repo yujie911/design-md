@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Design.md - 精选设计系统预览</title>
+    <meta name="description" content="精选54个顶级品牌设计，为AI代码生成提供设计参考">
+    
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ============================================
+           CSS Variables - Vercel Inspired Design System
+           ============================================ */
+        :root {
+            /* Colors - Light Mode */
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --bg-tertiary: #f5f5f5;
+            --text-primary: #171717;
+            --text-secondary: #666666;
+            --text-tertiary: #888888;
+            --border-color: #eaeaea;
+            --border-hover: #d4d4d4;
+            --accent-color: #171717;
+            --accent-hover: #000000;
+            --card-bg: #ffffff;
+            --tag-bg: #f5f5f5;
+            --tag-text: #666666;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+        }
+
+        /* Dark Mode - System Preference */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-primary: #0a0a0a;
+                --bg-secondary: #111111;
+                --bg-tertiary: #1a1a1a;
+                --text-primary: #fafafa;
+                --text-secondary: #a0a0a0;
+                --text-tertiary: #666666;
+                --border-color: #2a2a2a;
+                --border-hover: #3a3a3a;
+                --accent-color: #fafafa;
+                --accent-hover: #ffffff;
+                --card-bg: #111111;
+                --tag-bg: #1a1a1a;
+                --tag-text: #a0a0a0;
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+                --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+                --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        /* Dark Mode - Manual Toggle */
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #fafafa;
+            --text-secondary: #a0a0a0;
+            --text-tertiary: #666666;
+            --border-color: #2a2a2a;
+            --border-hover: #3a3a3a;
+            --accent-color: #fafafa;
+            --accent-hover: #ffffff;
+            --card-bg: #111111;
+            --tag-bg: #1a1a1a;
+            --tag-text: #a0a0a0;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ============================================
+           Reset & Base Styles
+           ============================================ */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ============================================
+           Layout Container
+           ============================================ */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 48px;
+            }
+        }
+
+        /* ============================================
+           Header Section
+           ============================================ */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .header {
+                background-color: rgba(10, 10, 10, 0.8);
+            }
+        }
+
+        [data-theme="dark"] .header {
+            background-color: rgba(10, 10, 10, 0.8);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            gap: 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            flex-shrink: 0;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #171717 0%, #444444 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .logo-icon {
+                background: linear-gradient(135deg, #fafafa 0%, #a0a0a0 100%);
+                color: #0a0a0a;
+            }
+        }
+
+        [data-theme="dark"] .logo-icon {
+            background: linear-gradient(135deg, #fafafa 0%, #a0a0a0 100%);
+            color: #0a0a0a;
+        }
+
+        .search-wrapper {
+            flex: 1;
+            max-width: 480px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 44px;
+            padding: 0 16px 0 44px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.9375rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .search-input:hover {
+            border-color: var(--border-hover);
+        }
+
+        .search-input:focus {
+            border-color: var(--text-secondary);
+            background-color: var(--bg-primary);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            pointer-events: none;
+        }
+
+        .search-shortcut {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 4px 8px;
+            background-color: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            pointer-events: none;
+        }
+
+        .search-clear {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            border: none;
+            background: var(--bg-tertiary);
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-tertiary);
+            transition: all 0.2s ease;
+        }
+
+        .search-clear:hover {
+            background: var(--border-hover);
+            color: var(--text-secondary);
+        }
+
+        .search-clear.visible {
+            display: flex;
+        }
+
+        .search-clear svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .search-wrapper.has-content .search-shortcut {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .search-shortcut {
+                display: none;
+            }
+        }
+
+        .header-stats {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .version-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 8px;
+            background-color: #dcfce7;
+            color: #166534;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            margin-left: 12px;
+            border: 1px solid #bbf7d0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .version-tag {
+                background-color: #14532d;
+                color: #86efac;
+                border-color: #166534;
+            }
+        }
+
+        [data-theme="dark"] .version-tag {
+            background-color: #14532d;
+            color: #86efac;
+            border-color: #166534;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+        }
+
+        .theme-toggle svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        .theme-toggle .moon-icon {
+            display: block;
+        }
+
+        /* Dark mode active state */
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .header-stats {
+                display: none;
+            }
+        }
+
+        /* ============================================
+           Hero Section
+           ============================================ */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                padding: 100px 0 80px;
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: var(--tag-bg);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .hero-tag {
+            padding: 6px 14px;
+            background-color: var(--tag-bg);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            color: var(--tag-text);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-family: inherit;
+        }
+
+        .hero-tag:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+
+        .hero-tag.active {
+            background-color: var(--accent-color);
+            color: var(--bg-primary);
+        }
+
+        /* ============================================
+           Filter Bar
+           ============================================ */
+        .filter-bar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 32px;
+            position: sticky;
+            top: 72px;
+            background-color: var(--bg-primary);
+            z-index: 50;
+        }
+
+        .filter-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            overflow-x: auto;
+            /* 隐藏滚动条 - IE和Edge */
+            -ms-overflow-style: none;
+        }
+
+        /* Firefox */
+        @supports (scrollbar-width: none) {
+            .filter-content {
+                scrollbar-width: none;
+            }
+        }
+
+        /* Chrome, Safari, Opera */
+        .filter-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-label {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: nowrap;
+        }
+
+        .filter-tag {
+            padding: 6px 14px;
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+            font-family: inherit;
+        }
+
+        .filter-tag:hover {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .filter-tag.active {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--bg-primary);
+        }
+
+        /* ============================================
+           Grid Layout
+           ============================================ */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 24px;
+            padding-bottom: 80px;
+        }
+
+        @media (min-width: 640px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* ============================================
+           Card Component
+           ============================================ */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .card-preview {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            background-color: var(--bg-secondary);
+        }
+
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-preview img {
+            transform: scale(1.02);
+        }
+
+        .card-preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 16px;
+            gap: 12px;
+        }
+
+        .card:hover .card-preview-overlay {
+            opacity: 1;
+        }
+
+        .preview-btn {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #171717;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        .preview-btn:hover {
+            background-color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .preview-btn.dark {
+            background-color: rgba(23, 23, 23, 0.95);
+            color: #fafafa;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .preview-btn {
+                background-color: rgba(23, 23, 23, 0.95);
+                color: #fafafa;
+            }
+            .preview-btn.dark {
+                background-color: rgba(255, 255, 255, 0.95);
+                color: #171717;
+            }
+        }
+
+        [data-theme="dark"] .preview-btn {
+            background-color: rgba(23, 23, 23, 0.95);
+            color: #fafafa;
+        }
+
+        [data-theme="dark"] .preview-btn.dark {
+            background-color: rgba(255, 255, 255, 0.95);
+            color: #171717;
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .card-title-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .card-title-link:hover {
+            color: var(--accent-color);
+        }
+
+        .card-badge {
+            padding: 4px 10px;
+            background-color: var(--tag-bg);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--tag-text);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+        }
+
+        .card-description {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .card-tag {
+            padding: 4px 10px;
+            background-color: var(--tag-bg);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            color: var(--tag-text);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           Empty State
+           ============================================ */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-state-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background-color: var(--tag-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .empty-state-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .empty-state-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* ============================================
+           Footer
+           ============================================ */
+        .footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 0.875rem;
+            color: var(--text-tertiary);
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        /* ============================================
+           Loading Animation
+           ============================================ */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.05s; }
+        .card:nth-child(2) { animation-delay: 0.1s; }
+        .card:nth-child(3) { animation-delay: 0.15s; }
+        .card:nth-child(4) { animation-delay: 0.2s; }
+        .card:nth-child(5) { animation-delay: 0.25s; }
+        .card:nth-child(6) { animation-delay: 0.3s; }
+        .card:nth-child(7) { animation-delay: 0.35s; }
+        .card:nth-child(8) { animation-delay: 0.4s; }
+        .card:nth-child(9) { animation-delay: 0.45s; }
+        .card:nth-child(10) { animation-delay: 0.5s; }
+        .card:nth-child(11) { animation-delay: 0.55s; }
+        .card:nth-child(12) { animation-delay: 0.6s; }
+
+        /* ============================================
+           Highlight Search Results
+           ============================================ */
+        .highlight {
+            background-color: rgba(251, 191, 36, 0.3);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="./" class="logo">
+                    <div class="logo-icon">D</div>
+                    <span>Design.md</span>
+                </a>
+                
+                <div class="search-wrapper" id="searchWrapper">
+                    <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput"
+                        placeholder="搜索设计系统..."
+                        autocomplete="off"
+                    >
+                    <span class="search-shortcut">Ctrl K</span>
+                    <button type="button" class="search-clear" id="searchClear" title="清空搜索">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="header-stats">
+                    <span class="stat-number" id="totalCount">54</span>
+                    <span>套设计系统</span>
+                    <span class="version-tag">Version 1.0.2</span>
+                </div>
+                
+                <button type="button" class="theme-toggle" id="themeToggle" title="切换主题">
+                    <!-- Sun icon for dark mode -->
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon icon for light mode -->
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="hero-badge-dot"></span>
+                <span>持续更新中</span>
+            </div>
+            <h1 class="hero-title">Awesome Design.md</h1>
+            <p class="hero-description">
+                精选54个顶级品牌设计系统，提取自知名产品官网。为AI代码生成提供精准的设计参考，让每一行代码都体现品牌美学。
+            </p>
+            <div class="hero-tags">
+                <button type="button" class="hero-tag" data-filter="all">全部</button>
+                <button type="button" class="hero-tag" data-filter="人工智能">人工智能</button>
+                <button type="button" class="hero-tag" data-filter="开发者">开发者</button>
+                <button type="button" class="hero-tag" data-filter="企业软件">企业软件</button>
+                <button type="button" class="hero-tag" data-filter="金融">金融</button>
+                <button type="button" class="hero-tag" data-filter="创意">创意</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <div class="container">
+            <div class="filter-content">
+                <span class="filter-label">快速筛选：</span>
+                <div class="filter-tags">
+                    <button type="button" class="filter-tag active" data-category="all">全部</button>
+                    <button type="button" class="filter-tag" data-category="人工智能">人工智能</button>
+                    <button type="button" class="filter-tag" data-category="开发者">开发者</button>
+                    <button type="button" class="filter-tag" data-category="企业软件">企业软件</button>
+                    <button type="button" class="filter-tag" data-category="金融">金融</button>
+                    <button type="button" class="filter-tag" data-category="创意">创意</button>
+                    <button type="button" class="filter-tag" data-category="生产力">生产力</button>
+                    <button type="button" class="filter-tag" data-category="基础设施">基础设施</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <main class="container">
+        <div class="grid" id="designGrid">
+            <!-- Cards will be injected by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                基于 <a href="https://github.com/VoltAgent/awesome-design-md" class="footer-link" target="_blank" rel="noopener">Awesome Design.md</a> 构建
+            </p>
+            <p class="footer-copyright">
+                武汉微海腾飞科技有限公司 &copy;2015-2026
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * 设计系统数据
+         * 包含54个设计系统的完整信息
+         */
+        const designSystems = [
+            {
+                id: "airbnb",
+                name: "Airbnb",
+                description: "从Airbnb官网提取的设计系统。温暖、友好的设计语言，强调信任感和社区氛围，适合旅行、社交和共享经济类产品。",
+                category: ["企业软件", "旅游", "社区"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/airbnb/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/airbnb/preview-dark-screenshot.png",
+                path: "./airbnb/"
+            },
+            {
+                id: "airtable",
+                name: "Airtable",
+                description: "从Airtable官网提取的设计系统。现代、灵活的数据管理界面设计，色彩丰富且富有层次感，适合生产力工具和数据库应用。",
+                category: ["生产力", "企业软件", "数据库"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/airtable/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/airtable/preview-dark-screenshot.png",
+                path: "./airtable/"
+            },
+            {
+                id: "apple",
+                name: "Apple",
+                description: "从Apple官网提取的设计系统。极简主义美学的巅峰，大量留白、精致排版和微妙动画，适合高端产品展示和科技品牌。",
+                category: ["产品", "高端", "科技"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/apple/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/apple/preview-dark-screenshot.png",
+                path: "./apple/"
+            },
+            {
+                id: "bmw",
+                name: "BMW",
+                description: "从BMW官网提取的设计系统。豪华汽车品牌的数字体验，深色主题、精致动效和高端质感，适合奢侈品和汽车行业。",
+                category: ["汽车", "奢华", "品牌"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/bmw/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/bmw/preview-dark-screenshot.png",
+                path: "./bmw/"
+            },
+            {
+                id: "cal",
+                name: "Cal.com",
+                description: "从Cal.com官网提取的设计系统。现代调度工具的设计语言，简洁明快、功能导向，适合日历、预约和效率类应用。",
+                category: ["生产力", "企业软件", "工具"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/cal/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/cal/preview-dark-screenshot.png",
+                path: "./cal/"
+            },
+            {
+                id: "claude",
+                name: "Claude",
+                description: "从Claude官网提取的设计系统。Anthropic AI助手的品牌设计，温暖橙色调、优雅排版，适合AI产品和知识型应用。",
+                category: ["人工智能", "助手", "产品"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/claude/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/claude/preview-dark-screenshot.png",
+                path: "./claude/"
+            },
+            {
+                id: "clay",
+                name: "Clay",
+                description: "从Clay官网提取的设计系统。个人CRM工具的设计语言，柔和渐变、友好插画，适合社交管理和关系维护类应用。",
+                category: ["企业软件", "客户管理", "生产力"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/clay/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/clay/preview-dark-screenshot.png",
+                path: "./clay/"
+            },
+            {
+                id: "clickhouse",
+                name: "ClickHouse",
+                description: "从ClickHouse官网提取的设计系统。高性能数据库的技术文档风格，清晰的信息架构，适合开发者工具和开源项目。",
+                category: ["开发者", "数据库", "开源"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/clickhouse/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/clickhouse/preview-dark-screenshot.png",
+                path: "./clickhouse/"
+            },
+            {
+                id: "cohere",
+                name: "Cohere",
+                description: "从Cohere官网提取的设计系统。企业级NLP平台的设计语言，专业稳重、蓝紫色调，适合B2B AI服务和API产品。",
+                category: ["人工智能", "企业", "接口"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/cohere/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/cohere/preview-dark-screenshot.png",
+                path: "./cohere/"
+            },
+            {
+                id: "coinbase",
+                name: "Coinbase",
+                description: "从Coinbase官网提取的设计系统。加密货币交易所的可信设计，蓝色主调、清晰层级，适合金融科技和交易平台。",
+                category: ["金融", "加密", "交易"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/coinbase/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/coinbase/preview-dark-screenshot.png",
+                path: "./coinbase/"
+            },
+            {
+                id: "composio",
+                name: "Composio",
+                description: "从Composio官网提取的设计系统。AI工具集成平台的设计语言，活力紫色、现代感强，适合AI开发者和工具链产品。",
+                category: ["人工智能", "开发者", "集成"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/composio/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/composio/preview-dark-screenshot.png",
+                path: "./composio/"
+            },
+            {
+                id: "cursor",
+                name: "Cursor",
+                description: "从Cursor官网提取的设计系统。AI代码编辑器的设计语言，深色主题、霓虹点缀，适合开发者工具和IDE产品。",
+                category: ["开发者", "人工智能", "编辑器"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/cursor/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/cursor/preview-dark-screenshot.png",
+                path: "./cursor/"
+            },
+            {
+                id: "elevenlabs",
+                name: "ElevenLabs",
+                description: "从ElevenLabs官网提取的设计系统。AI语音合成平台的设计语言，深色优雅、紫色调，适合音频和创意AI产品。",
+                category: ["人工智能", "音频", "创意"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/elevenlabs/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/elevenlabs/preview-dark-screenshot.png",
+                path: "./elevenlabs/"
+            },
+            {
+                id: "expo",
+                name: "Expo",
+                description: "从Expo官网提取的设计系统。React Native开发平台的简洁技术文档风格，清晰易读，适合开发者文档和工具网站。",
+                category: ["开发者", "移动", "开源"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/expo/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/expo/preview-dark-screenshot.png",
+                path: "./expo/"
+            },
+            {
+                id: "figma",
+                name: "Figma",
+                description: "从Figma官网提取的设计系统。协作设计工具的品牌语言，紫色活力、创意无限，适合设计工具和创意平台。",
+                category: ["创意", "设计", "协作"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/figma/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/figma/preview-dark-screenshot.png",
+                path: "./figma/"
+            },
+            {
+                id: "framer",
+                name: "Framer",
+                description: "从Framer官网提取的设计系统。网站构建工具的设计语言，黑色酷炫、动效丰富，适合创意机构和设计作品集。",
+                category: ["创意", "设计", "无代码"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/framer/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/framer/preview-dark-screenshot.png",
+                path: "./framer/"
+            },
+            {
+                id: "hashicorp",
+                name: "HashiCorp",
+                description: "从HashiCorp官网提取的设计系统。云基础设施的技术文档风格，专业严谨，适合企业级开源和DevOps工具。",
+                category: ["基础设施", "开发者", "企业"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/hashicorp/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/hashicorp/preview-dark-screenshot.png",
+                path: "./hashicorp/"
+            },
+            {
+                id: "ibm",
+                name: "IBM",
+                description: "从IBM官网提取的设计系统。Carbon设计系统的企业应用，模块化、可访问性强，适合大型企业应用和B2B产品。",
+                category: ["企业", "企业软件", "设计系统"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/ibm/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/ibm/preview-dark-screenshot.png",
+                path: "./ibm/"
+            },
+            {
+                id: "intercom",
+                name: "Intercom",
+                description: "从Intercom官网提取的设计系统。客户沟通平台的设计语言，友好蓝色、对话式UI，适合客服和消息类产品。",
+                category: ["企业软件", "通讯", "支持"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/intercom/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/intercom/preview-dark-screenshot.png",
+                path: "./intercom/"
+            },
+            {
+                id: "kraken",
+                name: "Kraken",
+                description: "从Kraken官网提取的设计系统。加密货币交易所的专业设计，深色主题、数据可视化，适合交易平台和金融科技。",
+                category: ["金融", "加密", "交易"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/kraken/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/kraken/preview-dark-screenshot.png",
+                path: "./kraken/"
+            },
+            {
+                id: "linear.app",
+                name: "Linear",
+                description: "从Linear官网提取的设计系统。 issue追踪工具的精致设计，深色优雅、动效流畅，适合生产力工具和开发者产品。",
+                category: ["开发者", "生产力", "工具"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/linear.app/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/linear.app/preview-dark-screenshot.png",
+                path: "./linear.app/"
+            },
+            {
+                id: "lovable",
+                name: "Lovable",
+                description: "从Lovable官网提取的设计系统。AI应用构建平台的设计语言，活泼多彩、创意无限，适合低代码和AI生成产品。",
+                category: ["人工智能", "无代码", "创意"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/lovable/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/lovable/preview-dark-screenshot.png",
+                path: "./lovable/"
+            },
+            {
+                id: "minimax",
+                name: "MiniMax",
+                description: "从MiniMax官网提取的设计系统。中国AI大模型公司的品牌设计，科技感强、蓝紫渐变，适合AI产品和科技公司。",
+                category: ["人工智能", "产品", "科技"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/minimax/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/minimax/preview-dark-screenshot.png",
+                path: "./minimax/"
+            },
+            {
+                id: "mintlify",
+                name: "Mintlify",
+                description: "从Mintlify官网提取的设计系统。现代文档平台的设计语言，清新薄荷绿、简洁优雅，适合文档站点和开发者产品。",
+                category: ["开发者", "文档", "工具"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/mintlify/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/mintlify/preview-dark-screenshot.png",
+                path: "./mintlify/"
+            },
+            {
+                id: "miro",
+                name: "Miro",
+                description: "从Miro官网提取的设计系统。在线白板协作平台的设计语言，蓝色活力、协作感强，适合团队协作和创意工具。",
+                category: ["协作", "创意", "企业软件"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/miro/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/miro/preview-dark-screenshot.png",
+                path: "./miro/"
+            },
+            {
+                id: "mistral.ai",
+                name: "Mistral AI",
+                description: "从Mistral AI官网提取的设计系统。欧洲AI公司的品牌设计，优雅简洁、橙色点缀，适合AI产品和研究型公司。",
+                category: ["人工智能", "研究", "产品"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/mistral.ai/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/mistral.ai/preview-dark-screenshot.png",
+                path: "./mistral.ai/"
+            },
+            {
+                id: "mongodb",
+                name: "MongoDB",
+                description: "从MongoDB官网提取的设计系统。文档数据库的技术品牌设计，绿色识别度高，适合数据库和开发者工具。",
+                category: ["数据库", "开发者", "企业"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/mongodb/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/mongodb/preview-dark-screenshot.png",
+                path: "./mongodb/"
+            },
+            {
+                id: "notion",
+                name: "Notion",
+                description: "从Notion官网提取的设计系统。全能工作空间的设计语言，黑白极简、高度可定制，适合生产力应用和知识管理。",
+                category: ["生产力", "企业软件", "知识"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/notion/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/notion/preview-dark-screenshot.png",
+                path: "./notion/"
+            },
+            {
+                id: "nvidia",
+                name: "NVIDIA",
+                description: "从NVIDIA官网提取的设计系统。AI计算巨头的品牌设计，绿色科技、未来感强，适合硬件科技和AI基础设施。",
+                category: ["科技", "人工智能", "硬件"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/nvidia/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/nvidia/preview-dark-screenshot.png",
+                path: "./nvidia/"
+            },
+            {
+                id: "ollama",
+                name: "Ollama",
+                description: "从Ollama官网提取的设计系统。本地LLM运行工具的设计语言，简洁直接、开发者友好，适合开源工具和CLI产品。",
+                category: ["人工智能", "开发者", "开源"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/ollama/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/ollama/preview-dark-screenshot.png",
+                path: "./ollama/"
+            },
+            {
+                id: "opencode.ai",
+                name: "OpenCode",
+                description: "从OpenCode官网提取的设计系统。AI编程助手的设计语言，现代专业、蓝紫色调，适合AI开发工具。",
+                category: ["人工智能", "开发者", "编程"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/opencode.ai/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/opencode.ai/preview-dark-screenshot.png",
+                path: "./opencode.ai/"
+            },
+            {
+                id: "pinterest",
+                name: "Pinterest",
+                description: "从Pinterest官网提取的设计系统。视觉发现平台的设计语言，红色活力、图片优先，适合社交和视觉内容应用。",
+                category: ["社交", "创意", "内容"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/pinterest/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/pinterest/preview-dark-screenshot.png",
+                path: "./pinterest/"
+            },
+            {
+                id: "posthog",
+                name: "PostHog",
+                description: "从PostHog官网提取的设计系统。产品分析平台的设计语言，多彩活力、刺猬 mascot，适合开发者工具和分析产品。",
+                category: ["开发者", "分析", "产品"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/posthog/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/posthog/preview-dark-screenshot.png",
+                path: "./posthog/"
+            },
+            {
+                id: "raycast",
+                name: "Raycast",
+                description: "从Raycast官网提取的设计系统。Mac效率工具的设计语言，深色精致、高度可扩展，适合效率工具和桌面应用。",
+                category: ["生产力", "开发者", "Mac平台"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/raycast/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/raycast/preview-dark-screenshot.png",
+                path: "./raycast/"
+            },
+            {
+                id: "replicate",
+                name: "Replicate",
+                description: "从Replicate官网提取的设计系统。AI模型运行平台的设计语言，深色科技、紫色调，适合AI基础设施和API服务。",
+                category: ["人工智能", "基础设施", "接口"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/replicate/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/replicate/preview-dark-screenshot.png",
+                path: "./replicate/"
+            },
+            {
+                id: "resend",
+                name: "Resend",
+                description: "从Resend官网提取的设计系统。现代邮件发送平台的设计语言，黑白极简、橙色点缀，适合开发者工具和API产品。",
+                category: ["开发者", "接口", "邮件"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/resend/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/resend/preview-dark-screenshot.png",
+                path: "./resend/"
+            },
+            {
+                id: "revolut",
+                name: "Revolut",
+                description: "从Revolut官网提取的设计系统。数字银行的设计语言，蓝白清新、金融科技感，适合金融应用和支付产品。",
+                category: ["金融", "银行", "金融科技"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/revolut/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/revolut/preview-dark-screenshot.png",
+                path: "./revolut/"
+            },
+            {
+                id: "runwayml",
+                name: "RunwayML",
+                description: "从RunwayML官网提取的设计系统。AI视频生成平台的设计语言，黑色高级、创意无限，适合创意AI和媒体工具。",
+                category: ["人工智能", "创意", "视频"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/runwayml/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/runwayml/preview-dark-screenshot.png",
+                path: "./runwayml/"
+            },
+            {
+                id: "sanity",
+                name: "Sanity",
+                description: "从Sanity官网提取的设计系统。Headless CMS的设计语言，红色活力、开发者友好，适合内容管理和API产品。",
+                category: ["内容管理", "开发者", "内容"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/sanity/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/sanity/preview-dark-screenshot.png",
+                path: "./sanity/"
+            },
+            {
+                id: "sentry",
+                name: "Sentry",
+                description: "从Sentry官网提取的设计系统。错误监控平台的设计语言，紫色专业、开发者导向，适合开发者工具和服务。",
+                category: ["开发者", "监控", "工具"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/sentry/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/sentry/preview-dark-screenshot.png",
+                path: "./sentry/"
+            },
+            {
+                id: "spacex",
+                name: "SpaceX",
+                description: "从SpaceX官网提取的设计系统。航天公司的品牌设计，深色未来、科技感强，适合科技品牌和前沿技术。",
+                category: ["科技", "航天", "品牌"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/spacex/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/spacex/preview-dark-screenshot.png",
+                path: "./spacex/"
+            },
+            {
+                id: "spotify",
+                name: "Spotify",
+                description: "从Spotify官网提取的设计系统。音乐流媒体的品牌设计，绿色活力、年轻化，适合娱乐和媒体应用。",
+                category: ["娱乐", "音乐", "媒体"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/spotify/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/spotify/preview-dark-screenshot.png",
+                path: "./spotify/"
+            },
+            {
+                id: "stripe",
+                name: "Stripe",
+                description: "从Stripe官网提取的设计系统。支付平台的设计语言，紫色渐变、精致优雅，适合金融科技和SaaS产品。",
+                category: ["金融", "企业软件", "支付"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/stripe/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/stripe/preview-dark-screenshot.png",
+                path: "./stripe/"
+            },
+            {
+                id: "supabase",
+                name: "Supabase",
+                description: "从Supabase官网提取的设计系统。开源Firebase替代方案的设计语言，绿色活力、开源友好，适合开发者工具。",
+                category: ["开发者", "数据库", "开源"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/supabase/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/supabase/preview-dark-screenshot.png",
+                path: "./supabase/"
+            },
+            {
+                id: "superhuman",
+                name: "Superhuman",
+                description: "从Superhuman官网提取的设计系统。高端邮件客户端的设计语言，深色优雅、效率至上，适合生产力工具和高端应用。",
+                category: ["生产力", "邮件", "高端"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/superhuman/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/superhuman/preview-dark-screenshot.png",
+                path: "./superhuman/"
+            },
+            {
+                id: "together.ai",
+                name: "Together AI",
+                description: "从Together AI官网提取的设计系统。AI模型训练平台的设计语言，深色科技、蓝紫渐变，适合AI基础设施。",
+                category: ["人工智能", "基础设施", "企业"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/together.ai/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/together.ai/preview-dark-screenshot.png",
+                path: "./together.ai/"
+            },
+            {
+                id: "uber",
+                name: "Uber",
+                description: "从Uber官网提取的设计系统。出行平台的设计语言，黑白简洁、全球化，适合移动应用和平台型产品。",
+                category: ["交通", "平台", "移动"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/uber/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/uber/preview-dark-screenshot.png",
+                path: "./uber/"
+            },
+            {
+                id: "vercel",
+                name: "Vercel",
+                description: "从Vercel官网提取的设计系统。前端部署平台的设计语言，黑白极简、开发者优先，适合技术产品和开发者工具。",
+                category: ["开发者", "基础设施", "工具"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/vercel/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/vercel/preview-dark-screenshot.png",
+                path: "./vercel/"
+            },
+            {
+                id: "voltagent",
+                name: "VoltAgent",
+                description: "从VoltAgent官网提取的设计系统。AI Agent框架的设计语言，现代活力、蓝紫色调，适合AI开发框架和工具。",
+                category: ["人工智能", "开发者", "框架"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/voltagent/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/voltagent/preview-dark-screenshot.png",
+                path: "./voltagent/"
+            },
+            {
+                id: "warp",
+                name: "Warp",
+                description: "从Warp官网提取的设计系统。现代终端工具的设计语言，深色霓虹、开发者酷炫，适合开发者工具和CLI应用。",
+                category: ["开发者", "终端", "工具"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/warp/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/warp/preview-dark-screenshot.png",
+                path: "./warp/"
+            },
+            {
+                id: "webflow",
+                name: "Webflow",
+                description: "从Webflow官网提取的设计系统。无代码网站构建器的设计语言，蓝色专业、创意自由，适合设计工具和创意平台。",
+                category: ["无代码", "创意", "设计"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/webflow/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/webflow/preview-dark-screenshot.png",
+                path: "./webflow/"
+            },
+            {
+                id: "wise",
+                name: "Wise",
+                description: "从Wise官网提取的设计系统。国际汇款平台的设计语言，蓝绿清新、可信友好，适合金融科技和支付产品。",
+                category: ["金融", "支付", "金融科技"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/wise/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/wise/preview-dark-screenshot.png",
+                path: "./wise/"
+            },
+            {
+                id: "x.ai",
+                name: "xAI",
+                description: "从xAI官网提取的设计系统。Elon Musk AI公司的品牌设计，黑色极简、神秘高端，适合AI产品和前沿科技。",
+                category: ["人工智能", "科技", "研究"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/x.ai/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/x.ai/preview-dark-screenshot.png",
+                path: "./x.ai/"
+            },
+            {
+                id: "zapier",
+                name: "Zapier",
+                description: "从Zapier官网提取的设计系统。自动化工作流平台的设计语言，橙色活力、友好易用，适合自动化和SaaS产品。",
+                category: ["自动化", "企业软件", "生产力"],
+                imageLight: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/zapier/preview-screenshot.png",
+                imageDark: "https://pub-2e4ecbcbc9b24e7b93f1a6ab5b2bc71f.r2.dev/designs/zapier/preview-dark-screenshot.png",
+                path: "./zapier/"
+            }
+        ];
+
+        /**
+         * 当前筛选状态
+         */
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        /**
+         * 初始化应用
+         */
+        function init() {
+            renderCards(designSystems);
+            setupEventListeners();
+            setupKeyboardShortcuts();
+            setupThemeToggle();
+        }
+
+        /**
+         * 设置主题切换功能
+         */
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const html = document.documentElement;
+            
+            // 检查本地存储或系统偏好
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // 初始化主题
+            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+                html.setAttribute('data-theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+            }
+            
+            // 切换主题
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+            
+            // 监听系统主题变化
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+                }
+            });
+        }
+
+        /**
+         * 渲染卡片列表
+         * @param {Array} systems - 设计系统数据数组
+         */
+        function renderCards(systems) {
+            const grid = document.getElementById('designGrid');
+            const totalCount = document.getElementById('totalCount');
+            
+            // 更新计数
+            totalCount.textContent = systems.length;
+            
+            // 清空网格
+            grid.innerHTML = '';
+            
+            // 空状态处理
+            if (systems.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🔍</div>
+                        <h3 class="empty-state-title">未找到匹配的设计系统</h3>
+                        <p class="empty-state-description">尝试使用其他关键词或清除筛选条件</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 渲染卡片
+            systems.forEach((system, index) => {
+                const card = createCard(system, index);
+                grid.appendChild(card);
+            });
+        }
+
+        /**
+         * 创建单个卡片元素
+         * @param {Object} system - 设计系统数据
+         * @param {number} index - 索引用于动画延迟
+         * @returns {HTMLElement} 卡片元素
+         */
+        function createCard(system, index) {
+            const card = document.createElement('article');
+            card.className = 'card';
+            card.style.animationDelay = `${index * 0.05}s`;
+            
+            const tagsHtml = system.category.map(tag => 
+                `<span class="card-tag">${tag}</span>`
+            ).join('');
+            
+            // 高亮搜索文本
+            const highlightedName = highlightText(system.name, currentSearch);
+            const highlightedDesc = highlightText(system.description, currentSearch);
+            
+            // 使用本地 Color Palette 图片作为卡片背景
+            const paletteImage = `./assets/palettes/${system.id}-palette.png`;
+            
+            card.innerHTML = `
+                <div class="card-preview">
+                    <img src="${paletteImage}" alt="${system.name} Color Palette" loading="lazy" onerror="this.src='${system.imageLight}'">
+                    <div class="card-preview-overlay">
+                        <a href="${system.path}preview.html" class="preview-btn" target="_blank" rel="noopener">浅色模式</a>
+                        <a href="${system.path}preview-dark.html" class="preview-btn dark" target="_blank" rel="noopener">深色模式</a>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <h3 class="card-title"><a href="${system.path}DESIGN.md" class="card-title-link" target="_blank" rel="noopener">${highlightedName}</a></h3>
+                        <span class="card-badge">${system.category[0]}</span>
+                    </div>
+                    <p class="card-description">${highlightedDesc}</p>
+                    <div class="card-tags">
+                        ${tagsHtml}
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        /**
+         * 高亮搜索匹配的文本
+         * @param {string} text - 原始文本
+         * @param {string} query - 搜索关键词
+         * @returns {string} 高亮后的HTML
+         */
+        function highlightText(text, query) {
+            if (!query) return text;
+            const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        /**
+         * 转义正则表达式特殊字符
+         * @param {string} string - 输入字符串
+         * @returns {string} 转义后的字符串
+         */
+        function escapeRegex(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        /**
+         * 筛选设计系统
+         * @param {string} category - 分类筛选条件
+         * @param {string} search - 搜索关键词
+         * @returns {Array} 筛选后的设计系统数组
+         */
+        function filterSystems(category, search) {
+            return designSystems.filter(system => {
+                // 分类筛选
+                const categoryMatch = category === 'all' || 
+                    system.category.some(cat => cat.toLowerCase() === category.toLowerCase());
+                
+                // 搜索筛选
+                const searchLower = search.toLowerCase();
+                const searchMatch = !search || 
+                    system.name.toLowerCase().includes(searchLower) ||
+                    system.description.toLowerCase().includes(searchLower) ||
+                    system.category.some(cat => cat.toLowerCase().includes(searchLower));
+                
+                return categoryMatch && searchMatch;
+            });
+        }
+
+        /**
+         * 设置事件监听器
+         */
+        function setupEventListeners() {
+            // 搜索输入
+            const searchInput = document.getElementById('searchInput');
+            const searchClear = document.getElementById('searchClear');
+            const searchWrapper = document.getElementById('searchWrapper');
+            
+            /**
+             * 更新清空按钮显示状态
+             */
+            function updateClearButton() {
+                const hasContent = searchInput.value.length > 0;
+                searchClear.classList.toggle('visible', hasContent);
+                searchWrapper.classList.toggle('has-content', hasContent);
+            }
+            
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                const filtered = filterSystems(currentFilter, currentSearch);
+                renderCards(filtered);
+                updateClearButton();
+            });
+            
+            // 清空按钮点击事件
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                currentSearch = '';
+                const filtered = filterSystems(currentFilter, currentSearch);
+                renderCards(filtered);
+                updateClearButton();
+                searchInput.focus();
+            });
+            
+            // Hero标签筛选
+            document.querySelectorAll('.hero-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const filter = tag.dataset.filter;
+                    
+                    // 更新激活状态
+                    document.querySelectorAll('.hero-tag').forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    
+                    // 同步Filter Bar
+                    document.querySelectorAll('.filter-tag').forEach(t => {
+                        t.classList.toggle('active', t.dataset.category === filter);
+                    });
+                    
+                    currentFilter = filter;
+                    const filtered = filterSystems(currentFilter, currentSearch);
+                    renderCards(filtered);
+                });
+            });
+            
+            // Filter Bar筛选
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const category = tag.dataset.category;
+                    
+                    // 更新激活状态
+                    document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    
+                    // 同步Hero标签
+                    document.querySelectorAll('.hero-tag').forEach(t => {
+                        t.classList.toggle('active', t.dataset.filter === category);
+                    });
+                    
+                    currentFilter = category;
+                    const filtered = filterSystems(currentFilter, currentSearch);
+                    renderCards(filtered);
+                });
+            });
+        }
+
+        /**
+         * 设置键盘快捷键
+         */
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + K 聚焦搜索
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    document.getElementById('searchInput').focus();
+                }
+                
+                // ESC 清除搜索
+                if (e.key === 'Escape') {
+                    const searchInput = document.getElementById('searchInput');
+                    const searchClear = document.getElementById('searchClear');
+                    const searchWrapper = document.getElementById('searchWrapper');
+                    if (document.activeElement === searchInput) {
+                        searchInput.value = '';
+                        currentSearch = '';
+                        const filtered = filterSystems(currentFilter, currentSearch);
+                        renderCards(filtered);
+                        searchClear.classList.remove('visible');
+                        searchWrapper.classList.remove('has-content');
+                        searchInput.blur();
+                    }
+                }
+            });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
