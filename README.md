@@ -14,6 +14,12 @@
 
 Design-MD 是一个基于 Go 语言开发的单文件静态 HTTP 服务器，专为 [Awesome Design.md](https://github.com/ThomesYu/design-md) 项目设计。它将所有静态资源（HTML、CSS、图片等）打包到单个二进制可执行文件中，无需依赖外部文件即可运行，方便开发人员预览与AI自行调用。
 
+<p align="center">
+  <img src="https://github.com/yujie911/design-md/blob/main/design-md/assets/palettes/ScreenShot_01.png" alt="ScreenShot_01">
+</br>
+  <img src="https://github.com/yujie911/design-md/blob/main/design-md/assets/palettes/ScreenShot_02.png" alt="ScreenShot_02">
+</p>
+
 ### 主要特性
 
 - 单文件可执行，无需安装，开箱即用
@@ -26,7 +32,7 @@ Design-MD 是一个基于 Go 语言开发的单文件静态 HTTP 服务器，专
 
 ### 下载预编译版本
 
-从 [Releases](../../releases) 页面下载适合您平台的版本：
+从 [发布](../../releases) 页面下载适合您平台的版本：
 
 | 平台        | 文件名                   | 说明           |
 | --------- | --------------------- | ------------ |
